@@ -32,6 +32,9 @@ export async function initMailer(): Promise<Transporter> {
       host: emailConfig.smtp.host,
       port: emailConfig.smtp.port,
       secure: emailConfig.smtp.secure,
+      logger:true,
+      debug:true,
+      requireTLS:true,
       auth: {
         user: emailConfig.smtp.user,
         pass: emailConfig.smtp.password
