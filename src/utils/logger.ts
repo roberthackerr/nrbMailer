@@ -1,24 +1,22 @@
-import pino from 'pino'
-import { emailConfig } from '../config/email-config.js'
+// src/utils/logger.ts
+import pino from 'pino';
 
-const isDev = process.env.NODE_ENV !== 'production'
-
-const logger = pino(
-  isDev
+// Configuration corrigée
+const logger = pino({
+  level: process.env.LOG_LEVEL || 'info',  // Assurez-vous que c'est une string valide
+  transport: process.env.NODE_ENV !== 'production' 
     ? {
-        level: emailConfig.logLevel,
-        transport: {
-          target: 'pino-pretty',
-          options: {
-            colorize: true,
-            translateTime: 'SYS:standard',
-            ignore: 'pid,hostname'
-          }
-        }
+        target: 'pino-pretty',
+        options: {
+          colorize: true,
+          translateTime: 'SYS:standard',
+          ignore: 'pid,hostname',
+        },
       }
-    : {
-        level: emailConfig.logLevel
-      }
-)
+    : undefined,
+  // Ajoutez cette ligne pour éviter l'erreur
+  useLevelLabels: true,
+  timestamp: pino.stdTimeFunctions.isoTime,
+});
 
-export { logger }
+export { logger };

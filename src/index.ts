@@ -3,7 +3,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 import emailRoutes from './routes/email.routes.js'
 import { emailConfig } from './config/email-config.js'
-import { initMailer, verifyTransport } from './config/mailer.js'
+import { initMailer, verifyTransport } from './config/mailer'
 import { logger } from './utils/logger.js'
 
 const app: Application = express()
