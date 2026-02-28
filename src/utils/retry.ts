@@ -6,6 +6,7 @@ interface RetryOptions {
   delayMs?: number
   backoffMultiplier?: number
   shouldRetry?: (error: any) => boolean
+   retryIf?: (error: any) => boolean 
 }
 
 export async function retry<T>(
