@@ -44,6 +44,7 @@ export async function initMailer(): Promise<any> {
       
       return transporter;
     } catch (error) {
+      logger.error(error);
       logger.error('Failed to initialize Gmail OAuth2', error);
     }
   }
