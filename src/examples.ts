@@ -58,7 +58,7 @@ async function examples() {
         budgetMax: 5000,
         currency: 'MGA',
         deadline: '2025-03-15',
-        skills: 'React Native, TypeScript, Firebase',
+        skills: ['React Native'],
         link: 'https://app.nrbtalents.com/projects/123',
         hoursToApply: 48
       },

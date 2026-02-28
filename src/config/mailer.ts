@@ -1,8 +1,8 @@
-// mailer.ts
 import nodemailer from 'nodemailer';
 import { google } from 'googleapis';
 import { emailConfig } from './email-config.js';
 import { logger } from '../utils/logger.js';
+import type { TransportOptions } from 'nodemailer';
 
 let transporter: any = null;
 
@@ -40,7 +40,7 @@ export async function initMailer(): Promise<any> {
           refreshToken: emailConfig.gmail.refreshToken,
           accessToken: accessToken.token,
         },
-      });
+      } as TransportOptions);  // 👈 Assertion de type
       
       return transporter;
     } catch (error) {
@@ -57,11 +57,11 @@ export async function initMailer(): Promise<any> {
         user: emailConfig.gmail.user,
         pass: emailConfig.gmail.appPassword
       }
-    });
+    } as TransportOptions);  // 👈 Assertion de type
     return transporter;
   }
 
-  // SMTP Custom
+  // SMTP Custom (pas besoin d'assertion ici car host/port sont standard)
   if (emailConfig.smtp.host && emailConfig.smtp.user) {
     logger.info(`Initializing SMTP transport: ${emailConfig.smtp.host}`);
     transporter = nodemailer.createTransport({
