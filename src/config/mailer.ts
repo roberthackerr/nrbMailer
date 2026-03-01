@@ -14,17 +14,17 @@ export async function initMailer(): Promise<any> {
   const env = emailConfig.nodeEnv;
 
   // Gmail with OAuth2 (preferred for production)
-  if (emailConfig.gmail.clientId && emailConfig.gmail.clientSecret && emailConfig.gmail.refreshToken) {
+  if (true) {
     logger.info('Initializing Gmail OAuth2 transport');
     
     const oauth2Client = new google.auth.OAuth2(
-      emailConfig.gmail.clientId,
-      emailConfig.gmail.clientSecret,
+      "877979758824-p9tsgqk3u0lccq3cpvhse7dk1u2b4iab.apps.googleusercontent.com",
+      "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",
       "https://developers.google.com/oauthplayground"
     );
 
     oauth2Client.setCredentials({ 
-      refresh_token: emailConfig.gmail.refreshToken 
+      refresh_token: "1//04FSYcRVAkCOICgYIARAAGAQSNwF-L9IrYO0Dqzt7Tkx3K1xMJu-WoMFDV0i6GhWNBvT-HPl2ygtf3Tta_XeHdZN4xQXv3NiSff0"
     });
 
     try {
